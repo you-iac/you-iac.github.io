@@ -1,18 +1,31 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>项目演示跳转</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>项目演示跳转</title>
+<style>
+body{min-height:100vh;margin:0;display:grid;place-items:center;font-family:system-ui,"Microsoft YaHei",sans-serif}
+.box{text-align:center}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Reliable Message Delivery</h2>
+<p>正在跳转到在线演示服务...</p>
+</div>
+<script>
+const projects={
+  rmd:"http://47.97.245.30:3000/"
+};
+const params=new URLSearchParams(location.search);
+const project=params.get("project");
+const target=projects[project];
+if(target){
+  location.replace(target);
+}else{
+  document.querySelector('.box').innerHTML='<h2>项目参数不存在</h2>';
+}
+</script>
+</body>
+</html>
